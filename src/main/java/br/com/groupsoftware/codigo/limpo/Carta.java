@@ -1,12 +1,9 @@
 package br.com.groupsoftware.codigo.limpo;
 
-import lombok.Data;
+public class Carta implements Comparable<Carta> {
 
-@Data
-public class Carta {
-
-	String numero;
-	String naipe;
+	private String numero;
+	private String naipe;
 
 	public Carta(String numero, String naipe) {
 		this.numero = numero;
@@ -47,6 +44,27 @@ public class Carta {
 	@Override
 	public String toString() {
 		return "[" + numero + naipe + "]";
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getNaipe() {
+		return naipe;
+	}
+
+	public void setNaipe(String naipe) {
+		this.naipe = naipe;
+	}
+
+	public int compareTo(Carta o) {
+		return new Integer(BaralhoUtil.cartas.indexOf(this.numero))
+				.compareTo(new Integer(BaralhoUtil.cartas.indexOf(o.numero)));
 	}
 
 }

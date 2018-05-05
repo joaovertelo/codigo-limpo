@@ -1,18 +1,16 @@
 package br.com.groupsoftware.codigo.limpo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class GeradorMao {
 
-	private String[] cartas = { "A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-	private String[] naipes = { "Hearts", "Clubs", "Spades", "Diamonds" };
 	List<Carta> cartasSorteadas = new ArrayList<Carta>();
 
 	public Mao gerarMao(Jogador jogador) {
 		Mao mao = new Mao();
-		mao.setJogador(jogador);
 		List<Carta> cartasDaMao = new ArrayList<Carta>();
 		int contador = 0;
 		while (contador < 5) {
@@ -24,14 +22,14 @@ public class GeradorMao {
 				contador++;
 			}
 		}
-
+		Collections.sort(cartasDaMao);
 		mao.setCartas(cartasDaMao);
 		return mao;
 	}
 
 	public Carta gerarCarta() {
 		Random r = new Random();
-		return new Carta(cartas[r.nextInt(13)], naipes[r.nextInt(4)]);
+		return new Carta(BaralhoUtil.cartas.get(r.nextInt(12)), BaralhoUtil.naipes[r.nextInt(3)]);
 
 	}
 
