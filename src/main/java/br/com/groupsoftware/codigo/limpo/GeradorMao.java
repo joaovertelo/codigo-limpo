@@ -13,18 +13,19 @@ public class GeradorMao {
 	public Mao gerarMao(Jogador jogador) {
 		Mao mao = new Mao();
 		mao.setJogador(jogador);
-		List<Carta> cartas = new ArrayList<Carta>();
+		List<Carta> cartasDaMao = new ArrayList<Carta>();
 		int contador = 0;
 		while (contador < 5) {
 			Carta carta = gerarCarta();
 
-			if (cartasSorteadas.contains(carta)) {
+			if (!cartasSorteadas.contains(carta)) {
 				cartasSorteadas.add(carta);
+				cartasDaMao.add(carta);
 				contador++;
 			}
 		}
 
-		mao.setCartas(cartas);
+		mao.setCartas(cartasDaMao);
 		return mao;
 	}
 
